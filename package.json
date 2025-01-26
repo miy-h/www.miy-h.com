@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "www.miy-h.com",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --incremental"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "packageManager": "pnpm@10.0.0"
+}

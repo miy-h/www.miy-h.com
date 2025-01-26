@@ -9,13 +9,19 @@ jobs:
       deployments: write
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install
 
       - name: Build
-        run: mkdir dist && cp index.html dist
+        run: pnpm build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=miy-h --commit-dirty=true
+          command: pages deploy ./_site --project-name=miy-h --commit-dirty=true
