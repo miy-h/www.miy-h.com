@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <title>{{ title }}</title>
+  <link rel="alternate" hreflang="{{ page.lang }}" href="{{ page.url | fullUrl }}">
+  {% for link in page.url | locale_links %}
+    <link rel="alternate" hreflang="{{ link.lang }}" href="{{ link.url | fullUrl }}">
+  {% endfor %}
+</head>
+<body>
+  {{ content | safe }}
+</body>
+</html>
